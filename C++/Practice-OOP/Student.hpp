@@ -1,0 +1,10 @@
+#ifndef PRACTICE_CODE_STUDENT_HPP
+#define PRACTICE_CODE_STUDENT_HPP
+
+
+class Student {
+
+};
+
+
+#endif //PRACTICE_CODE_STUDENT_HPP
