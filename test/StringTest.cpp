@@ -18,7 +18,7 @@ TEST_CASE("StringConstructorWithElement", "") {
     size_t expectCapacity = 8;
 
     // Check valid String constructor with element and compare size - Should equals
-    CHECK(validString.getSize() == expect);
+    CHECK(validString.getSize() == expectSize);
 }
 
 //TEST_CASE("StringAppend", "") {
@@ -34,5 +34,3 @@ TEST_CASE("StringConstructorWithElement", "") {
 //    char *stringResult = validString.toString();
 //    CHECK(stringExpect == stringResult);
 //}
-
-

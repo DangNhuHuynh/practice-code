@@ -53,7 +53,9 @@ String::String(char target, size_t size) {
     this->original[index] = '\0';
 }
 
-
+String::~String() {
+  delete[] this->original;
+}
 
 size_t String::getSize() const {
     return this->size;

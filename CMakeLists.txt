@@ -21,7 +21,7 @@ file(GLOB_RECURSE SOURCE_TEST
     )
 
 file(GLOB_RECURSE STRING_TEST
-        test/String.cpp
+        test/StringTest.cpp
         C++/String/String.cpp
     )
 
