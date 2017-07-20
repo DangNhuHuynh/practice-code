@@ -19,7 +19,7 @@ namespace dtnh {
 
     private:
         /**
-         *
+         * Reallocate memories for String
          */
         void reAllocate();
 
@@ -55,6 +55,20 @@ namespace dtnh {
         ~String();
 
     public: /* For method */
+        /**
+         * Get size reality of string
+         *
+         * @return size_t
+         */
+        size_t getSize() const;
+
+        /**
+         * Returns the size of the storage space currently allocated for the string.
+         *
+         * @return size_t
+         */
+        size_t getCapacity() const;
+
         /**
          * Extends the string by appending additional characters
          * at the end of its current value:
@@ -94,13 +108,13 @@ namespace dtnh {
          * @param str
          * @return String
          */
-        friend std::ostream& operator<<(std::ostream &os, const String &str) {
-            size_t index;
-            for (index = 0; index < str.lengthStr; index++) {
-                os << str.myString[index];
-            }
-            return os;
-        }
+//        friend std::ostream& operator<<(std::ostream &os, const String &str) {
+//            size_t index;
+//            for (index = 0; index < str.lengthStr; index++) {
+//                os << str.myString[index];
+//            }
+//            return os;
+//        }
     };
 
 }

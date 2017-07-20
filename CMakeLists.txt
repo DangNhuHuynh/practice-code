@@ -25,5 +25,4 @@ file(GLOB_RECURSE STRING_TEST
         C++/String/String.cpp
     )
 
-add_executable(all_test ${SOURCE_TEST} ${SOURCE_C} ${SOURCE_CXX} misc/main-test.cpp C++/String/String.hpp C++/String/String.cpp test/String.cpp)
 add_executable(string_test ${STRING_TEST} misc/main-test.cpp)
