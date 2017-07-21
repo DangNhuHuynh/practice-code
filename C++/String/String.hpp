@@ -70,6 +70,13 @@ namespace dtnh {
         size_t getCapacity() const;
 
         /**
+         * Return chain character with String type.
+         *
+         * @return char*
+         */
+        char *toString();
+
+        /**
          * Extends the string by appending additional characters
          * at the end of its current value:
          *
@@ -92,13 +99,6 @@ namespace dtnh {
          * @return String
          */
         String operator=(const String&);
-
-        /**
-         * Return chain character with String type.
-         *
-         * @return char*
-         */
-        char *toString();
 
     public: /* For friend function */
         /**
