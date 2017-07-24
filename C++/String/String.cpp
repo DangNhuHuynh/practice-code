@@ -102,3 +102,29 @@ String& String::append(const String &target) {
     this->original[index] = '\0';
     return *this;
 }
+
+String String::operator+(String &string) const {
+    String result;
+    result.size = this->size + string.size;
+    String Temp = strcat(this->original, string.original);
+
+    size_t index;
+    for (index = 0; index <= Temp.size; index++) {
+        result.original[index] = Temp.original[index];
+    }
+    return result;
+    }
+
+String String::operator=(const String &string) {
+    this->size = string.size;
+    this->capacity = string.capacity;
+    this->original = new char[this->capacity];
+
+    size_t index;
+    for (index =0; index < string.size; index++) {
+        this->original[index] = string.original[index];
+    }
+    delete[] this->original;
+    this->original[index] = '\0';
+    return  *this;
+}

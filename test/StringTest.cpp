@@ -29,10 +29,12 @@ TEST_CASE("StringConstuctorWithTwoElement", "") {
     String validString('a', 4);
     size_t expectSize = 4;
     size_t expectCapacity = 8;
+    size_t resultSize = validString.getSize();
+    size_t resultCapacity = validString.getCapacity();
 
     // Check valid String constructor with two element
-    CHECK(validString.getSize() == expectSize);
-    CHECK(validString.getCapacity() == expectCapacity);
+    CHECK(resultSize == expectSize);
+    CHECK(resultCapacity == expectCapacity);
 }
 
 TEST_CASE("StringCopyConstructor", "") {
@@ -59,6 +61,28 @@ TEST_CASE("StringAppend", "") {
     String validAppendString(validString);
     size_t result = validAppendString.getSize();
     size_t expect = 4;
-    
+
+    // Check size of validString with size of validAppenString.
     CHECK(expect == result);
+}
+
+TEST_CASE("StringTotal", "") {
+    // Give two valid String to join two strings into a new string - Should equals
+    String firstValidString = "123";
+    String secondValidString = "456";
+    String totalString = firstValidString + secondValidString;
+    size_t result = totalString.getSize();
+    size_t expect = 6;
+
+    // Check totalString size with total size of firstValidString and secondValidString.
+    CHECK(expect == result);
+}
+
+TEST_CASE("StringAssignmentConstructor", "") {
+    String validString("Huynh");
+    String resultString = validString;
+    size_t expect = 5;
+    size_t resultSize = resultString.getSize();
+
+    CHECK(resultSize == expect);
 }

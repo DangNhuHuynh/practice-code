@@ -91,7 +91,7 @@ namespace dtnh {
          *
          * @return String
          */
-        String operator+(const String&);
+        String operator+(String&) const;
 
         /**
          * String Assignment
