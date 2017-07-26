@@ -66,6 +66,15 @@ TEST_CASE("StringAppend", "") {
     CHECK(expect == result);
 }
 
+TEST_CASE("StringInsert", "") {
+    String validString = "1";
+    String target = "2";
+    String Temp = validString.insert(1, target);
+    size_t expect = 1;
+    std::cout << Temp.toString();
+    CHECK(Temp.getSize() == expect);
+}
+
 TEST_CASE("StringTotal", "") {
     // Give two valid String to join two strings into a new string - Should equals
     String firstValidString = "123";

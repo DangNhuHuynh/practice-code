@@ -85,6 +85,16 @@ namespace dtnh {
          */
         String &append(const String &target);
 
+        /**
+         * Inserts additional characters into the string right
+         * before the character indicated by pos
+         *
+         * @param position
+         * @param target `String'
+         * @return String
+         */
+        String &insert(size_t position, String &target);
+
     public: /* For operator */
         /**
          * Total two String
@@ -105,16 +115,16 @@ namespace dtnh {
          * Console String
          *
          * @param os
-         * @param str
+         * @param str `String'
          * @return String
          */
-//        friend std::ostream& operator<<(std::ostream &os, const String &str) {
-//            size_t index;
-//            for (index = 0; index < str.lengthStr; index++) {
-//                os << str.myString[index];
-//            }
-//            return os;
-//        }
+        friend std::ostream& operator<<(std::ostream &os, const String &str) {
+            size_t index;
+            for (index = 0; index < str.size; index++) {
+                os << str.original[index];
+            }
+            return os;
+        }
     };
 
 }

@@ -103,6 +103,22 @@ String& String::append(const String &target) {
     return *this;
 }
 
+String& String::insert(size_t position, String &target) {
+    size_t index;
+        for (index = this->size; index > position; index--) {
+            this->original[index] = this->original[index - 1];
+    }
+
+    for (index = 0; index < target.size; index++) {
+        String Temp = Temp.append(target);
+        this->original[position] = Temp.original[index];
+        position++;
+        this->size++;
+        this->reAllocate();
+    }
+    return *this;
+}
+
 String String::operator+(String &string) const {
     String result;
     result.size = this->size + string.size;
