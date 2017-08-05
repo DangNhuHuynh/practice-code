@@ -1,10 +1,9 @@
 /CMakeFiles
-/cmake-build-debug
 /cmake_install.cmake
 /CMakeCache.txt
 /Makefile
 /.idea
 /practice-code.cbp
-/main_test
-/Makefile
+/string_test
 /all_test
+/cmake-build-debug

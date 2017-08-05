@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.5.0)
+cmake_minimum_required(VERSION 3.2.2)
 project(practice-code)
 
 # Set compiler
@@ -20,4 +20,9 @@ file(GLOB_RECURSE SOURCE_TEST
         test/*
     )
 
-add_executable(all_test ${SOURCE_TEST} ${SOURCE_C} ${SOURCE_CXX} misc/main-test.cpp)
+file(GLOB_RECURSE STRING_TEST
+        test/StringTest.cpp
+        C++/String/String.cpp
+    )
+
+add_executable(string_test ${STRING_TEST} misc/main-test.cpp)
