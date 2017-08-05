@@ -1,0 +1,14 @@
+language: cpp
+sudo: required
+dist: trusty
+compiler:
+- g++
+os:
+- linux
+before_script:
+- cmake .
+script:
+- make
+- ./string_test
+notifications:
+  slack: dtnh:wlzTYKbM5ZUv6qyX69kkOxys
