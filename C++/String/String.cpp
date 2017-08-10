@@ -3,6 +3,7 @@
 //
 
 #include <cstring>
+#include <malloc.h>
 #include "String.hpp"
 
 using namespace dtnh;
@@ -67,7 +68,7 @@ String::String(const String &copyString) {
 
 String::~String() {
     this->size = 0;
-  delete[] this->original;
+    delete[] this->original;
 }
 
 size_t String::getSize() const {
@@ -79,66 +80,55 @@ size_t String::getCapacity() const {
 }
 
 char* String::toString() {
-    char* result = new char[this->size + 1];
+    return this->original;
+}
 
-    size_t index;
-    for(index = 0; index < this->size; index++) {
-        result[index] = this->original[index];
-    }
-    result[index] = '\0';
+// FIXME: danghuynh please fix this method
+//String& String::append(const String &target) {
+//    this->size = target.size;
+//    this->capacity = target.capacity;
+//    this->original = new char[this->capacity];
+//
+//    size_t index;
+//    for (index = 0; index < this->size; index++) {
+//        this->original[index] = target.original[index];
+//    }
+//    delete[] this->original;
+//    this->original[index] = '\0';
+//    return *this;
+//}
+
+// FIXME: danghuynh please fix this method
+//String& String::insert(size_t position, String &target) {
+//    size_t index;
+//        for (index = this->size; index > position; index--) {
+//            this->original[index] = this->original[index - 1];
+//    }
+//
+//    for (index = 0; index < target.size; index++) {
+//        String Temp = Temp.append(target);
+//        this->original[position] = Temp.original[index];
+//        position++;
+//        this->size++;
+//        this->reAllocate();
+//    }
+//    return *this;
+//}
+
+String String::operator+(const String &target) {
+    char *holder = strcat(this->original, target.original);
+    String result = holder;
     return result;
 }
 
-String& String::append(const String &target) {
+String String::operator=(const String &target) {
     this->size = target.size;
     this->capacity = target.capacity;
     this->original = new char[this->capacity];
 
     size_t index;
-    for (index = 0; index < this->size; index++) {
+    for (index =0; index < target.size; index++) {
         this->original[index] = target.original[index];
-    }
-    delete[] this->original;
-    this->original[index] = '\0';
-    return *this;
-}
-
-String& String::insert(size_t position, String &target) {
-    size_t index;
-        for (index = this->size; index > position; index--) {
-            this->original[index] = this->original[index - 1];
-    }
-
-    for (index = 0; index < target.size; index++) {
-        String Temp = Temp.append(target);
-        this->original[position] = Temp.original[index];
-        position++;
-        this->size++;
-        this->reAllocate();
-    }
-    return *this;
-}
-
-String String::operator+(String &string) const {
-    String result;
-    result.size = this->size + string.size;
-    String Temp = strcat(this->original, string.original);
-
-    size_t index;
-    for (index = 0; index <= Temp.size; index++) {
-        result.original[index] = Temp.original[index];
-    }
-    return result;
-    }
-
-String String::operator=(const String &string) {
-    this->size = string.size;
-    this->capacity = string.capacity;
-    this->original = new char[this->capacity];
-
-    size_t index;
-    for (index =0; index < string.size; index++) {
-        this->original[index] = string.original[index];
     }
     delete[] this->original;
     this->original[index] = '\0';

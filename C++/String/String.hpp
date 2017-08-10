@@ -1,7 +1,3 @@
-//
-// Created by danghuynh on 19/07/2017.
-//
-
 #ifndef PRACTICE_CODE_STRING_H
 #define PRACTICE_CODE_STRING_H
 
@@ -74,7 +70,7 @@ namespace dtnh {
          *
          * @return char*
          */
-        char *toString();
+        char* toString();
 
         /**
          * Extends the string by appending additional characters
@@ -101,7 +97,7 @@ namespace dtnh {
          *
          * @return String
          */
-        String operator+(String&) const;
+        String operator+(const String&);
 
         /**
          * String Assignment
