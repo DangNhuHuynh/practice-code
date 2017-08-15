@@ -55,26 +55,25 @@ TEST_CASE("StringDestructor", "") {
     delete validString;
 }
 
-// FIXME: danghuynh please fix this test case
-//TEST_CASE("StringAppend") {
-//    // Give a valid String then append a new string to this and compare size - Should equals
-//    String validString = "1234";
-//    String validAppendString(validString);
-//    size_t result = validAppendString.getSize();
-//    size_t expect = 4;
-//
-//    // Check size of validString with size of validAppenString.
-//    CHECK(expect == result);
-//}
+ //FIXME: danghuynh please fix this test case
+TEST_CASE("StringAppend") {
+    // Give a valid String then append a new string to this and compare size - Should equals
+    String validString = "1234";
+    validString.append("anhkhoa");
+    char *expect = (char*) "1234anhkhoa";
+    char *result = validString.toString();
+    CHECK(expect == result);
+}
 
 // FIXME: danghuynh please fix this test case
-//TEST_CASE("StringInsert") {
-//    String validString = "1";
-//    String target = "2";
-//    String Temp = validString.insert(1, target);
-//    size_t expect = 1;
-//    CHECK(Temp.getSize() == expect);
-//}
+TEST_CASE("StringInsert") {
+    String validString = "1345";
+    String target = "213413241";
+    validString.insert(1, target);
+
+    String expect = "12345";
+    CHECK(expect.toString() == validString.toString());
+}
 
 TEST_CASE("StringTotal") {
     // Give two valid String to join two strings into a new string - Should equals

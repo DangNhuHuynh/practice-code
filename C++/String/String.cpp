@@ -84,36 +84,37 @@ char* String::toString() {
 }
 
 // FIXME: danghuynh please fix this method
-//String& String::append(const String &target) {
-//    this->size = target.size;
-//    this->capacity = target.capacity;
-//    this->original = new char[this->capacity];
-//
-//    size_t index;
-//    for (index = 0; index < this->size; index++) {
-//        this->original[index] = target.original[index];
-//    }
-//    delete[] this->original;
-//    this->original[index] = '\0';
-//    return *this;
-//}
+String String::append(const String &target) {
+    this->size = this->size + target.size;
+    this->capacity = this->size * 2;
+    char *temp = this->original;
+    this->original = new char[this->capacity];
+    size_t index;
+    for (index = 0; index < strlen(temp); index++) {
+         this->original[index] = temp[index];
+    }
+
+    for (index = 0; index < target.size; index++) {
+        size_t indexInLoop = index + strlen(temp);
+        this->original[indexInLoop] = target.original[index];
+    }
+
+    delete[] temp;
+    this->original[this->size] = '\0';
+    return *this;
+}
 
 // FIXME: danghuynh please fix this method
-//String& String::insert(size_t position, String &target) {
-//    size_t index;
-//        for (index = this->size; index > position; index--) {
-//            this->original[index] = this->original[index - 1];
-//    }
-//
-//    for (index = 0; index < target.size; index++) {
-//        String Temp = Temp.append(target);
-//        this->original[position] = Temp.original[index];
-//        position++;
-//        this->size++;
-//        this->reAllocate();
-//    }
-//    return *this;
-//}
+String& String::insert(size_t position, String &target) {
+    size_t index;
+    for (index = this->size; index >= position; index--) {
+        this->original[index + target.size] = this->original[index];
+    }
+    for (index = 0; index < target.size; index++) {
+        this->original[index + position] = target.original[index];
+    }
+    return *this;
+}
 
 String String::operator+(const String &target) {
     char *holder = strcat(this->original, target.original);

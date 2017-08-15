@@ -79,7 +79,7 @@ namespace dtnh {
          * @param target `String'
          * @return String
          */
-        String &append(const String &target);
+        String append(const String &target);
 
         /**
          * Inserts additional characters into the string right
