@@ -24,6 +24,13 @@ void String::reAllocate() {
    }
 }
 
+void String::clear() {
+    delete[] this->original;
+    this->original = new char;
+    this->original[0] = '\0';
+    this->size = 0;
+}
+
 String::String() {
     this->original = new char[4];
     this->capacity = 4;
@@ -104,14 +111,44 @@ String String::append(const String &target) {
     return *this;
 }
 
+bool String::compare(const String &target) {
+    size_t indexFirst;
+    size_t indexSecond;
+    for (indexFirst = 0; indexFirst < this->size; indexFirst++) {
+        for (indexSecond = 0; indexSecond < target.size; indexSecond++) {
+            if (this->original[indexFirst] == target.original[indexSecond]) {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+
 // FIXME: danghuynh please fix this method
 String& String::insert(size_t position, String &target) {
     size_t index;
     for (index = this->size; index >= position; index--) {
         this->original[index + target.size] = this->original[index];
     }
+
     for (index = 0; index < target.size; index++) {
         this->original[index + position] = target.original[index];
+    }
+    return *this;
+}
+
+String String::replace(size_t position, size_t length, String &target) {
+    size_t index;
+
+        for (index = this->size; index > position; index--) {
+            if (target.size > length) {
+            this->original[index + target.size] = this->original[index];
+        }
+    }
+
+    for (index = 0; index < target.size; index++) {
+        this->original[index + position] = target.original[index];
+        std::cout<<this->original<<std::endl;
     }
     return *this;
 }

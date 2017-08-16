@@ -19,6 +19,11 @@ namespace dtnh {
          */
         void reAllocate();
 
+        /**
+         * Erases the contents of the string, which becomes an empty string (with a length of 0 characters).
+         */
+        void clear();
+
     public:
         /**
          * String default constructor.
@@ -82,6 +87,14 @@ namespace dtnh {
         String append(const String &target);
 
         /**
+         * Compares the value of String object
+         *
+         * @param target `String'
+         * @return true or false
+         */
+        bool compare(const String &target);
+
+        /**
          * Inserts additional characters into the string right
          * before the character indicated by pos
          *
@@ -90,6 +103,16 @@ namespace dtnh {
          * @return String
          */
         String &insert(size_t position, String &target);
+
+
+        /**
+         * Replace portion of String
+         *
+         * @param position `size_t'
+         * @param target `String'
+         * @return String
+         */
+        String replace(size_t position, size_t length, String &target);
 
     public: /* For operator */
         /**
