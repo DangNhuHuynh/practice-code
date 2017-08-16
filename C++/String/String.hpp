@@ -112,7 +112,7 @@ namespace dtnh {
          * @param target `String'
          * @return String
          */
-        String replace(size_t position, size_t length, String &target);
+        String replace(size_t position, size_t length, const String &target);
 
     public: /* For operator */
         /**

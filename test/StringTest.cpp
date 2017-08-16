@@ -104,9 +104,6 @@ using namespace dtnh;
 
 TEST_CASE("StringReplace", "") {
     String validString("1225678");
-    String target = "34";
-    String expect = "12345678";
-    String Temp = validString.replace(2, 1,target);
-    std::cout<<Temp.toString() << std::endl;
-    CHECK(expect.getSize() == Temp.getSize());
+    validString.replace(6, 1, "234");
+    std::cout << validString << std::endl;
 }

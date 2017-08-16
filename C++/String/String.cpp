@@ -137,18 +137,31 @@ String& String::insert(size_t position, String &target) {
     return *this;
 }
 
-String String::replace(size_t position, size_t length, String &target) {
-    size_t index;
+String String::replace(size_t position, size_t length, const String &target) {
+    if (position < 0 || position >= this->size) {
+        throw (std::invalid_argument("Position out of bond!!!"));
+    }
 
-        for (index = this->size; index > position; index--) {
-            if (target.size > length) {
-            this->original[index + target.size] = this->original[index];
+    if (length <= 0) {
+        throw (std::invalid_argument("Cant replace"));
+    }
+
+    size_t index;
+    if (length > target.size) {
+        for (index = position + target.size; position < this->size; index++) {
+            this->original[index] = this->original[index + 1];
         }
     }
 
+    if (length < target.size) {
+        for (index = this->size; index >= position + length; index--) {
+            this->original[index + 1] = this->original[index];
+        }
+        this->size = this->size + target.size - length;
+    }
+
     for (index = 0; index < target.size; index++) {
-        this->original[index + position] = target.original[index];
-        std::cout<<this->original<<std::endl;
+        this->original[position + index] = target.original[index];
     }
     return *this;
 }
