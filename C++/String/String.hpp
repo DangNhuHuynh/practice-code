@@ -6,12 +6,14 @@
 #include <glob.h>
 #include <clocale>
 
+typedef char* string;
+
 namespace dtnh {
     class String {
     private:
         size_t size;
         size_t capacity;
-        char* original;
+        string original;
 
     private:
         /**
@@ -24,6 +26,12 @@ namespace dtnh {
          */
         void clear();
 
+        /**
+         * Reallocate memories for String
+         *
+         * @param newCapacity `size_t'
+         */
+        void reAllocate(size_t newCapacity);
     public:
         /**
          * String default constructor.
@@ -75,7 +83,7 @@ namespace dtnh {
          *
          * @return char*
          */
-        char* toString();
+        string toString();
 
         /**
          * Extends the string by appending additional characters
@@ -102,7 +110,7 @@ namespace dtnh {
          * @param target `String'
          * @return String
          */
-        String &insert(size_t position, String &target);
+        String insert(size_t position, String &target);
 
 
         /**
@@ -110,7 +118,7 @@ namespace dtnh {
          *
          * @param position `size_t'
          * @param target `String'
-         * @return String
+         * @return `String'
          */
         String replace(size_t position, size_t length, const String &target);
 
@@ -145,7 +153,6 @@ namespace dtnh {
             return os;
         }
     };
-
 }
 
 #endif //PRACTICE_CODE_STRING_H

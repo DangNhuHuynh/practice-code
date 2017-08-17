@@ -24,6 +24,20 @@ void String::reAllocate() {
    }
 }
 
+void String::reAllocate(size_t newCapacity) {
+    this->capacity = newCapacity * 2;
+    char * holder = new char[this->capacity];
+
+    size_t index;
+    for (index = 0; index < this->size; index++) {
+        holder[index] = this->original[index];
+    }
+
+    delete[] this->original;
+    this->original = holder;
+    this->original[index] = '\0';
+}
+
 void String::clear() {
     delete[] this->original;
     this->original = new char;
@@ -86,7 +100,7 @@ size_t String::getCapacity() const {
     return this->capacity;
 }
 
-char* String::toString() {
+string String::toString() {
     return this->original;
 }
 
@@ -125,7 +139,7 @@ bool String::compare(const String &target) {
 }
 
 // FIXME: danghuynh please fix this method
-String& String::insert(size_t position, String &target) {
+String String::insert(size_t position, String &target) {
     size_t index;
     for (index = this->size; index >= position; index--) {
         this->original[index + target.size] = this->original[index];
@@ -148,21 +162,28 @@ String String::replace(size_t position, size_t length, const String &target) {
 
     size_t index;
     if (length > target.size) {
-        for (index = position + target.size; position < this->size; index++) {
+        for (index = position + target.size; index < this->size; index++) {
             this->original[index] = this->original[index + 1];
         }
+        this->size = this->size - (length - target.size);
     }
 
     if (length < target.size) {
+        if (this->size + (target.size - length) > this->capacity - 2) {
+            this->reAllocate(this->size + (target.size - length));
+        }
         for (index = this->size; index >= position + length; index--) {
             this->original[index + 1] = this->original[index];
         }
-        this->size = this->size + target.size - length;
+        this->size = this->size + (target.size - length);
+        this->reAllocate();
     }
 
     for (index = 0; index < target.size; index++) {
         this->original[position + index] = target.original[index];
     }
+
+    this->original[this->size] = '\0';
     return *this;
 }
 
@@ -175,13 +196,13 @@ String String::operator+(const String &target) {
 String String::operator=(const String &target) {
     this->size = target.size;
     this->capacity = target.capacity;
+    delete[] this->original;
     this->original = new char[this->capacity];
 
     size_t index;
     for (index =0; index < target.size; index++) {
         this->original[index] = target.original[index];
     }
-    delete[] this->original;
     this->original[index] = '\0';
     return  *this;
 }
