@@ -5,7 +5,7 @@
 #include <string>
 #include <glob.h>
 #include <clocale>
-
+#include <stdexcept>
 typedef char* string;
 
 namespace dtnh {
@@ -22,7 +22,8 @@ namespace dtnh {
         void reAllocate();
 
         /**
-         * Erases the contents of the string, which becomes an empty string (with a length of 0 characters).
+         * Erases the contents of the string,
+         * which becomes an empty string (with a length of 0 characters).
          */
         void clear();
 

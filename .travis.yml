@@ -9,6 +9,6 @@ before_script:
 - cmake .
 script:
 - make
-- ./string_test
+- ./string_test -d yes
 notifications:
   slack: dtnh:wlzTYKbM5ZUv6qyX69kkOxys
