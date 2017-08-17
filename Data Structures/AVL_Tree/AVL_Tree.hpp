@@ -1,0 +1,10 @@
+#ifndef PRACTICE_CODE_AVL_TREE_HPP
+#define PRACTICE_CODE_AVL_TREE_HPP
+
+
+class AVL_Tree {
+
+};
+
+
+#endif //PRACTICE_CODE_AVL_TREE_HPP
