@@ -1,0 +1,7 @@
+c:\users\dangh\source\repos\1560229_BTTL03\ConnectionDB\bin\Debug\ConnectionDB.exe.config
+c:\users\dangh\source\repos\1560229_BTTL03\ConnectionDB\bin\Debug\ConnectionDB.exe
+c:\users\dangh\source\repos\1560229_BTTL03\ConnectionDB\bin\Debug\ConnectionDB.pdb
+c:\users\dangh\source\repos\1560229_BTTL03\ConnectionDB\obj\Debug\ConnectionDB.csprojResolveAssemblyReference.cache
+c:\users\dangh\source\repos\1560229_BTTL03\ConnectionDB\obj\Debug\ConnectionDB.csproj.CoreCompileInputs.cache
+c:\users\dangh\source\repos\1560229_BTTL03\ConnectionDB\obj\Debug\ConnectionDB.exe
+c:\users\dangh\source\repos\1560229_BTTL03\ConnectionDB\obj\Debug\ConnectionDB.pdb
